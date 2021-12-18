@@ -22,7 +22,7 @@ router.post('/verNotificaciones', function(req, res, next) {
             return;
         } 
         if (filas.length>0) {
-            res.send({notification:filas});
+            res.send(filas);
         } else {
             res.send({mensaje:'No existe el id de Usuario ingresado'});
         }     

@@ -19,6 +19,7 @@ const AUTH_TOKEN = process.env.AUTH_TOKEN;
 const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 const io = require('socket.io-client');
 const router = express.Router();
+var cors = require('cors');
 //inicializaciones
 const app = express();
 
@@ -39,6 +40,8 @@ app.use(flash());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cors());
+app.options('*', cors());
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')));
