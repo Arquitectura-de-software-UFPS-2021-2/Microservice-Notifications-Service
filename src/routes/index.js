@@ -16,13 +16,13 @@ router.post('/verNotificaciones', function(req, res, next) {
     const notifUsuario = {
         id_user:id_user
     }
-    database.query('SELECT * FROM user_notification where ?',[notifUsuario], function(error,filas){
+    database.query('SELECT * FROM notification where ?',[notifUsuario], function(error,filas){
         if (error) {            
             console.log('error en el listado');
             return;
         } 
         if (filas.length>0) {
-            res.send({user_notification:filas});
+            res.send({notification:filas});
         } else {
             res.send({mensaje:'No existe el id de Usuario ingresado'});
         }     
@@ -35,32 +35,20 @@ router.get('/',(req,res) =>{
 
 //Enviar una Notificación a un Usuario determinado
 router.post('/crearNotificacion', async (req, res,) =>{
-const { description, id_sender, id_type, create_date, id_state, id_user } = req.body;
+const { title, description, id_user, id_sender, id_type, id_state} = req.body;
 const newNotif = {
+    title:title,
     description:description,
+    id_user:id_user,
     id_sender:id_sender,
-    id_type:id_type,
-    create_date:create_date,
-    id_state:id_state
+    id_type:id_type
 };
-  database.query('insert into notification set ?',[newNotif], function (error,resultado){
+  database.query('insert into notification set ?,create_date=CURDATE(), id_state=1',[newNotif], function (error,resultado){
     if (error){
         console.log(error);
         return;
     }
 }); 
-
-const id_notifi = await database.query('SELECT MAX(id) AS id FROM notification');
-    const user = {
-        id_notification:id_notifi[0].id,
-        id_user:id_user
-    };
-    database.query('insert into user_notification set ?',[user], function (error,resultado){
-        if (error){
-            console.log(error);
-            return;
-        }
-    });
 res.send({mensaje:'La carga se efectuo correctamente'});
 
 });
@@ -86,7 +74,7 @@ res.send({mensaje:'Estado de la Notificación Actualizado'});
 
 
 router.get('/sendMailRegistro', async (req, res) => {
-    const { email, name, password} = req.body
+    const { email, username, password} = req.body
     const contentHTML = `<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0;border-collapse:collapse;margin:0 auto"> 
     <tbody> 
     <tr> 
@@ -175,7 +163,7 @@ router.get('/sendMailRegistro', async (req, res) => {
     <br> 
     </div> 
     <ul style="color:#000000;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;text-align:left;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;text-decoration-style:initial;text-decoration-color:initial"> 
-    <li><strong>Usuario: ${name}</strong><br></li> 
+    <li><strong>Usuario: ${username}</strong><br></li> 
     <li><strong>Contraseña: ${password}</strong></li> 
     
     </ul> 
