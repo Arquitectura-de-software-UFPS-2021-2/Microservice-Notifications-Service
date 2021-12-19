@@ -1,22 +1,25 @@
 # Microservice-Notifications-Service
-##Rutas
+![alt text](https://1.bp.blogspot.com/-z6LMrSwx_XA/XbhhKRAfMZI/AAAAAAAAoFs/CCSm0SMIq-47MjxmjGvnmcZd4DN3GG63QCLcBGAsYHQ/s1600/email-4539382_1280.jpg)
 
-REQUEST 
-
-POST /verNotificaciones
-
-Requiere: JSON or Array
+*Microservicio para la Gestión de Notificaciones del Portal Educativo*
+---
+## Rutas 
+```
+Petición POST /verNotificaciones
+```
+Requiere: BODY - RAW - TypeJSON
 
 {
-        id_user:id_user
+        "id_user":id_user
 }
 
-
-
-RESPONSE
-
+```
+Response  JSON de todas las notificaciones recibidas por el Usuario
+```
 [
-    {
+
+{
+
         "id": 1,
         "title": "Nuevo Curso",
         "description": "Inscribete",
@@ -26,7 +29,9 @@ RESPONSE
         "create_date": "2021-12-18T00:00:00.000Z",
         "reading_date": null,
         "id_state": 1
+        
     },
+    
     {
         "id": 2,
         "title": "Registro exitoso",
@@ -40,3 +45,21 @@ RESPONSE
     }
 ]
 
+---
+## Tecnologías Utilizadas 🛠
+  - **_NodeJS_** - *Entorno de ejecución para JavaScript*
+  - **_JavaScript_** - *Lenguaje de Programación*
+  - **_MySQL_** - *Motor de Base de Datos*
+---
+
+## Autores :busts_in_silhouette:
+- **Cristian Ricardo Tautiva** - [CristianTautiva](https://github.com/CristianTautiva)
+- **Ivonne Diaz** - [ivonnediaz2](https://github.com/ivonnediaz2)
+- **Nelson Eduardo Amaya** - [NelsonAmayaCalderon19](https://github.com/NelsonAmayaCalderon19)
+
+ ## Expresiones de Gratitud 🎁
+
+* Comenta a otros sobre este proyecto 🗣
+* Invita una hamburguesa 🍔 o un café ☕ a alguien de este maravilloso equipo. 
+* Da las gracias públicamente 🤪
+---
