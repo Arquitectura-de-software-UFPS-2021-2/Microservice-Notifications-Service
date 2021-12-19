@@ -3,7 +3,9 @@
 
 *Microservicio para la Gestión de Notificaciones del Portal Educativo*
 ---
-## Rutas despues de Base:  http://3.145.167.71:4000   o  http://ec2-3-145-167-71.us-east-2.compute.amazonaws.com:4000/
+## Base:  http://3.145.167.71:4000   o  http://ec2-3-145-167-71.us-east-2.compute.amazonaws.com:4000
+
+#### Rutas
 
 ### Petición POST /verNotificaciones
 
