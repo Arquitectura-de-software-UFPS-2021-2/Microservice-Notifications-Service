@@ -4,17 +4,19 @@
 *Microservicio para la Gestión de Notificaciones del Portal Educativo*
 ---
 ## Rutas 
-```
-Petición POST /verNotificaciones
-```
+
+### Petición POST /verNotificaciones
+
 Requiere: BODY - RAW - TypeJSON
 
 {
+
         "id_user":id_user
+        
 }
 
 ```
-Response  JSON de todas las notificaciones recibidas por el Usuario
+Response:  JSON de todas las notificaciones recibidas por el Usuario
 ```
 [
 
@@ -44,6 +46,55 @@ Response  JSON de todas las notificaciones recibidas por el Usuario
         "id_state": 2
     }
 ]
+
+
+### Petición POST /crearNotificacion
+
+Requiere: BODY - RAW - TypeJSON
+
+{
+
+        "title": "Nuevo Taller",
+        "description": "Taller de Programacion web",
+        "id_user": 1,
+        "id_sender": 2,
+        "id_type": 1
+        
+}
+
+```
+
+Response:  mensaje de Confirmación del Envió de la Notificación
+```
+{
+
+        mensaje:'La carga se efectuo correctamente'
+        
+}
+
+### Petición POST /sendMailRegistro
+
+Requiere: BODY - RAW - TypeJSON
+
+{
+
+        "email": "email@gmail.com",
+        "username": "Name_User",
+        "password": "password"  
+        
+}
+
+```
+
+Response:  mensaje de Confirmación del Envió del Email
+```
+
+{
+
+        mensaje:'enviado'
+
+} 
+
 
 ---
 ## Tecnologías Utilizadas 🛠
