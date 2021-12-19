@@ -3,7 +3,7 @@
 
 *Microservicio para la Gestión de Notificaciones del Portal Educativo*
 ---
-## Rutas 
+## Rutas despues de Base:  http://3.145.167.71:4000
 
 ### Petición POST /verNotificaciones
 
