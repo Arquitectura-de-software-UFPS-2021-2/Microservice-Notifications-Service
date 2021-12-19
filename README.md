@@ -3,7 +3,7 @@
 
 *Microservicio para la Gestión de Notificaciones del Portal Educativo*
 ---
-## Rutas despues de Base:  http://3.145.167.71:4000
+## Rutas despues de Base:  http://3.145.167.71:4000   o  http://ec2-3-145-167-71.us-east-2.compute.amazonaws.com:4000/
 
 ### Petición POST /verNotificaciones
 
@@ -89,14 +89,105 @@ Requiere: BODY - RAW - TypeJSON
 Response:  mensaje de Confirmación del Envió del Email
 ```
 
+Cadena texto :  "Enviado"
+
+
+### Petición POST /sendMailLogin
+
+Requiere: BODY - RAW - TypeJSON
+
 {
 
-        mensaje:'enviado'
+        "email": "email@gmail.com",
+        "username": "Name_User",
 
-} 
+        
+}
+
+```
+
+Response:  mensaje de Confirmación del Envió del Email
+```
+
+Cadena texto :  "Enviado"
+
 
 
 ---
+
+### Petición POST /sendNotiToNumber
+
+Requiere: BODY - RAW - TypeJSON
+
+{
+
+        "numero": "+57 311***652*",
+        "mensaje": "mensaje de texto al movil",
+
+        
+}
+
+```
+
+Response:  mensaje de Confirmación del Envió del Email
+```
+
+Cadena texto :  "Mensaje Enviado"
+
+
+
+---
+
+### Petición POST /sendMailAsesoria
+
+Requiere: BODY - RAW - TypeJSON
+
+{
+
+        "email":"email@gmail.com", 
+        "username":"Dcris", 
+        "teacher_name":"Milton Vera", 
+        "hora":"4:30 PM"
+
+        
+}
+
+```
+
+Response:  mensaje de Confirmación del Envió del Email
+```
+
+Cadena texto :  "Enviado"
+
+
+
+---
+
+### Petición POST /sendMailAuditoria
+
+Requiere: BODY - RAW - TypeJSON
+
+{
+
+        "email":"email@gmail.com", 
+        "username":"Dcris", 
+        "teacher_name":"Milton Vera", 
+        "hora":"4:30 PM"
+
+        
+}
+
+```
+
+Response:  mensaje de Confirmación del Envió del Email
+```
+
+Cadena texto :  "Enviado"
+
+
+
+---
+
 ## Tecnologías Utilizadas 🛠
   - **_NodeJS_** - *Entorno de ejecución para JavaScript*
   - **_JavaScript_** - *Lenguaje de Programación*
