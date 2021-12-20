@@ -14,8 +14,8 @@ const database = require('../database');
 const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 
 //Ver Notificaciones de un Usuario
-router.post('/verNotificaciones', function(req, res, next) {
-    const {id_user} = req.body;
+router.get('/verNotificaciones/:id_user', function(req, res, next) {
+    const {id_user} = req.params;
     const notifUsuario = {
         id_user:id_user
     }
@@ -56,8 +56,26 @@ res.send({mensaje:'La carga se efectuo correctamente'});
 
 });
 
+
+router.post('/crearUser', async (req, res,) =>{
+    const { fullname, email, id_role } = req.body;
+    const newUser = {
+        fullname:fullname,
+        email:email,
+        id_role:id_role
+    };
+      database.query('insert into user set ?',[newUser], function (error,resultado){
+        if (error){
+            console.log(error);
+            return;
+        }
+    }); 
+    res.send({mensaje:'La carga se efectuo correctamente'});
+    
+    });
+
 //Marcar como leida una Notificacion
-router.post('/notificacionLeida', async (req, res,) =>{
+router.put('/notificacionLeida', async (req, res,) =>{
     const { id } = req.body; 
     const NotifLeida = {
         id:id
