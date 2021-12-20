@@ -1,4 +1,4 @@
-const { Router } = require('express');
+
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
@@ -14,10 +14,10 @@ const database = require('../database');
 const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 
 //Ver Notificaciones de un Usuario
-router.get('/verNotificaciones/:id_user', function(req, res, next) {
-    const {id_user} = req.params;
+router.post('/verNotificaciones', function(req, res) {
+    const  { id_user }  = req.body;
     const notifUsuario = {
-        id_user:id_user
+        id_user:id
     }
     database.query('SELECT * FROM notification where ?',[notifUsuario], function(error,filas){
         if (error) {            
@@ -27,10 +27,25 @@ router.get('/verNotificaciones/:id_user', function(req, res, next) {
         if (filas.length>0) {
             res.send(filas);
         } else {
-            res.send({mensaje:'No existe el id de Usuario ingresado'});
+           
         }     
     });
 });
+
+router.get('/verNotificaciones/:id', async (req, res) => {
+    const  id  = req.params.id;
+    const notifUsuario = {
+        id_user:id
+    }
+    try {
+       let data= await  database.query('SELECT * FROM notification where ?',[notifUsuario]);
+       res.send(data);
+    } catch (error) {
+        res.send({mensaje:'Error al solicitar notificaciones'});
+    }
+  
+
+})
 
 router.get('/',(req,res) =>{
  res.render("index");
@@ -821,9 +836,6 @@ router.post('/sendMailAuditoria', async (req, res) => {
     }
 
 })
-
-module.exports = router;
-
 
 
 
