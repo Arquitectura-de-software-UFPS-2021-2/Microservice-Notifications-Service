@@ -32,7 +32,7 @@ router.post('/verNotificaciones', function(req, res) {
     });
 });
 
-router.get('/verNotificaciones/:id', async (req, res) => {
+router.get('/usuarios/notifications/:id', async (req, res) => {
     const  id  = req.params.id;
     const notifUsuario = {
         id_user:id
@@ -61,6 +61,7 @@ const newNotif = {
     id_sender:id_sender,
     id_type:id_type
 };
+
   database.query('insert into notification set ?,create_date=CURDATE(), id_state=1',[newNotif], function (error,resultado){
     if (error){
         console.log(error);
@@ -70,6 +71,28 @@ const newNotif = {
 res.send({mensaje:'La carga se efectuo correctamente'});
 
 });
+
+
+
+router.post('/usuarios/notifications', async (req, res,) =>{
+    const { title, description, id_user, id_sender, id_type, id_state} = req.body;
+    const newNotif = {
+        title:title,
+        description:description,
+        id_user:id_user,
+        id_sender:id_sender,
+        id_type:id_type
+    };
+    
+      database.query('insert into notification set ?,create_date=CURDATE(), id_state=1',[newNotif], function (error,resultado){
+        if (error){
+            console.log(error);
+            return;
+        }
+    }); 
+    res.send({mensaje:'La carga se efectuo correctamente'});
+    
+    });
 
 
 router.post('/crearUser', async (req, res,) =>{
@@ -89,6 +112,24 @@ router.post('/crearUser', async (req, res,) =>{
     
     });
 
+
+    router.post('/usuarios/crear', async (req, res,) =>{
+        const { fullname, email, id_role } = req.body;
+        const newUser = {
+            fullname:fullname,
+            email:email,
+            id_role:id_role
+        };
+          database.query('insert into user set ?',[newUser], function (error,resultado){
+            if (error){
+                console.log(error);
+                return;
+            }
+        }); 
+        res.send({mensaje:'La carga se efectuo correctamente'});
+        
+        });
+
 //Marcar como leida una Notificacion
 router.put('/notificacionLeida', async (req, res,) =>{
     const { id } = req.body; 
@@ -107,6 +148,47 @@ router.put('/notificacionLeida', async (req, res,) =>{
 });
 res.send({mensaje:'Estado de la Notificación Actualizado'});
 });
+
+
+router.put('/usuarios/readingNotifications', async (req, res,) =>{
+    const { id } = req.body; 
+    const NotifLeida = {
+        id:id
+    }; 
+    const state ={
+        id_state:2
+    }
+    database.query('UPDATE notification SET ?,reading_date=CURDATE() WHERE ?',[state,NotifLeida], function(error,filas){
+        if (error) {            
+            console.log('error en la consulta');
+            console.log(error);
+            return;
+        } 
+});
+res.send({mensaje:'Estado de la Notificación Actualizado'});
+});
+
+router.put('/usuarios/notifications', async (req, res,) =>{
+    const { id, title, description, id_user, id_sender, id_type, id_state  } = req.body; 
+    const NotifLeida = {
+        title: title, 
+        description:description, 
+        id_user:id_user, 
+        id_sender:id_sender, 
+        id_type:id_type,
+        id_state:id_state
+    }; 
+    
+    database.query('UPDATE notification SET ? WHERE ?',[NotifLeida,id], function(error,filas){
+        if (error) {            
+            console.log('error en la consulta');
+            console.log(error);
+            return;
+        } 
+});
+res.send({mensaje:'Notificación Actualizada'});
+});
+
 
 
 router.post('/sendMailRegistro', async (req, res) => {
