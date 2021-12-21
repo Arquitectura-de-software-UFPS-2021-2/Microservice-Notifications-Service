@@ -13,7 +13,7 @@
 
 ### RESPUESTA SEND
 
-{mensaje:'Error al solicitar notificaciones'}
+mensaje:'Error al solicitar notificaciones'
 
 ## Petición DELETE 
 /usuarios/notifications/delete/:id'
@@ -31,8 +31,8 @@ Requiere: BODY - RAW - TypeJSON
         description:description,
         id_user:id_user,
         id_sender:id_sender,
-        id_type:id_type
-    }
+        id_type:id_type,
+}
 
 
 ### Respuesta SEND
@@ -51,7 +51,7 @@ Requiere: BODY - RAW - TypeJSON
             fullname:fullname,
             email:email,
             id_role:id_role
-        }
+}
 
 
 ### Respuesta SEND
@@ -63,7 +63,7 @@ Requiere: BODY - RAW - TypeJSON
 
  {
         id:id
-    }
+ }
 
 
 ### Respuesta SEND
@@ -84,7 +84,7 @@ Requiere: BODY - RAW - TypeJSON
         id_sender:id_sender, 
         id_type:id_type,
         id_state:id_state
-    }
+ }
     
  ### Respuesta SEND
  mensaje:'Notificación Actualizada'
