@@ -47,6 +47,33 @@ router.get('/usuarios/notifications/:id', async (req, res) => {
 
 })
 
+
+router.delete('/usuarios/delete/:id', async (req, res) => {
+    const  id  = req.params.id;
+    try {
+        await database.query('DELETE FROM user WHERE id = ?', [id]);
+        res.send("Eliminado satisfactoriamente");
+    } catch (error) {
+        res.send("error al eliminar "+error);
+    }
+    
+
+})
+
+
+router.delete('/usuarios/notifications/delete/:id', async (req, res) => {
+    const  id  = req.params.id;
+    try {
+        await database.query('DELETE FROM notification WHERE id = ?', [id]);
+        res.send("Eliminado Noti satisfactoriamente");
+    } catch (error) {
+        res.send("error al eliminar "+error);
+    }
+    
+
+})
+
+
 router.get('/',(req,res) =>{
  res.render("index");
 })
@@ -126,7 +153,7 @@ router.post('/crearUser', async (req, res,) =>{
                 return;
             }
         }); 
-        res.send({mensaje:'La carga se efectuo correctamente'});
+        res.send({mensaje:'Usuario registrado correctamente'});
         
         });
 
