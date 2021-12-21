@@ -32,6 +32,13 @@
 
 ### Respuesta SEND
 ```
+"Eliminado Noti Satisfactoriamente"
+```
+
+## Petición DELETE /usuarios/delete/:id
+
+### Respuesta SEND
+```
 "Eliminado Satisfactoriamente"
 ```
 
