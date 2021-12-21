@@ -7,22 +7,30 @@
 
 # Rutas
 
-## Petición GET/usuarios/notifications/:id
+## Petición GET /usuarios/notifications/:id
 
 
 
 ### RESPUESTA
 
-[{"id":1,"title":"Nuevo Curso","description":"Inscribete","id_user":1,"id_sender":2,"id_type":7,"create_date":"2021-12-18T00:00:00.000Z","reading_date":null,"id_state":1}]
+[{
+     "id":1,
+     "title":"Nuevo Curso",
+     "description":"Inscribete",
+     "id_user":1,"id_sender":2,"id_type":7,
+     "create_date":"2021-12-18T00:00:00.000Z",
+     "reading_date":null,
+     "id_state":1
+}]
 
-## Petición DELETE 
-/usuarios/notifications/delete/:id'
+## Petición DELETE /usuarios/notifications/delete/:id
+
 
 ### Respuesta SEND
 "Eliminado Satisfactoriamente"
 
-## Petición POST /
-'/usuarios/notifications'
+## Petición POST /usuarios/notifications
+
 
 Requiere: BODY - RAW - TypeJSON
 
@@ -43,7 +51,7 @@ mensaje de Confirmación del Envió de la Notificación
         
 }
 
-## Petición POST '/usuarios/crear'
+## Petición POST /usuarios/crear
 
 Requiere: BODY - RAW - TypeJSON
 
