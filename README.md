@@ -12,8 +12,10 @@
 
 
 ### RESPUESTA
+[
 
-[{
+{
+
      "id":1,
      "title":"Nuevo Curso",
      "description":"Inscribete",
@@ -21,13 +23,17 @@
      "create_date":"2021-12-18T00:00:00.000Z",
      "reading_date":null,
      "id_state":1
-}]
+     
+}
+
+]
 
 ## Petición DELETE /usuarios/notifications/delete/:id
 
-
 ### Respuesta SEND
+```
 "Eliminado Satisfactoriamente"
+```
 
 ## Petición POST /usuarios/notifications
 
@@ -35,16 +41,19 @@
 Requiere: BODY - RAW - TypeJSON
 
 {
+
         title:title,
         description:description,
         id_user:id_user,
         id_sender:id_sender,
         id_type:id_type,
+        
 }
 
 
 ### Respuesta SEND
 mensaje de Confirmación del Envió de la Notificación
+
 {
 
     mensaje:'La carga se efectuo correctamente'
@@ -56,29 +65,35 @@ mensaje de Confirmación del Envió de la Notificación
 Requiere: BODY - RAW - TypeJSON
 
 {
+
             fullname:fullname,
             email:email,
             id_role:id_role
+            
 }
 
 
 ### Respuesta SEND
+```
 mensaje:'Usuario registrado correctamente'
-
+```
 ## Petición PUT /usuarios/readingNotifications'
 
 Requiere: BODY - RAW - TypeJSON
 
  {
+ 
         id:id
+        
  }
 
 
 ### Respuesta SEND
+
 mensaje:'Estado de la Notificación Actualizado'
-
-
+```
 Cadena texto :  "Enviado"
+```
 
 ## Petición PUT /usuarios/notifications
 
@@ -86,17 +101,20 @@ Requiere: BODY - RAW - TypeJSON
 
 
  {
+ 
         title: title, 
         description:description, 
         id_user:id_user, 
         id_sender:id_sender, 
         id_type:id_type,
         id_state:id_state
+        
  }
     
  ### Respuesta SEND
+ ```
  mensaje:'Notificación Actualizada'
-
+```
 ## Petición POST /sendNotiToNumber
 
 Requiere: BODY - RAW - TypeJSON
@@ -104,19 +122,15 @@ Requiere: BODY - RAW - TypeJSON
 {
 
         "numero": "+57 311***652*",
-        "mensaje": "mensaje de texto al movil",
-
-        
+        "mensaje": "mensaje de texto al movil"       
 }
 
 ### Respuesta SEND
+
 mensaje de Confirmación del Envió del Email
-
-
+```
 Cadena texto :  "Mensaje Enviado"
-
-
-
+```
 ---
 
 ## Petición POST /sendMailAsesoria
@@ -129,18 +143,14 @@ Requiere: BODY - RAW - TypeJSON
         "username":"Dcris", 
         "teacher_name":"Milton Vera", 
         "hora":"4:30 PM"
-
-        
+      
 }
-
-
 
 ### Respuesta SEND
 mensaje de Confirmación del Envió del Email
-
+```
 Cadena texto :  "Enviado"
-
-
+```
 
 ---
 
@@ -154,17 +164,14 @@ Requiere: BODY - RAW - TypeJSON
         "username":"Dcris", 
         "teacher_name":"Milton Vera", 
         "hora":"4:30 PM"
-
         
 }
 
 ### Respuesta SEND
 mensaje de Confirmación del Envió del Email
-
+```
 Cadena texto :  "Enviado"
-
-
-
+```
 ---
 
 ## Tecnologías Utilizadas 🛠
