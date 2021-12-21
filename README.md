@@ -5,119 +5,91 @@
 ---
 ## Base:  http://3.145.167.71:4000   o  http://ec2-3-145-167-71.us-east-2.compute.amazonaws.com:4000
 
-#### Rutas
+# Rutas
 
-### Petición POST /verNotificaciones
+## Petición GET/
+
+'usuarios/notifications/:id'
+
+### RESPUESTA SEND
+
+{mensaje:'Error al solicitar notificaciones'}
+
+## Petición DELETE 
+/usuarios/notifications/delete/:id'
+
+### Respuesta SEND
+"error al eliminar "
+
+## Petición POST /
+'/usuarios/notifications'
 
 Requiere: BODY - RAW - TypeJSON
 
 {
-
-        "id_user":id_user
-        
-}
-
-```
-Response:  JSON de todas las notificaciones recibidas por el Usuario
-```
-[
-
-{
-
-        "id": 1,
-        "title": "Nuevo Curso",
-        "description": "Inscribete",
-        "id_user": 1,
-        "id_sender": 2,
-        "id_type": 7,
-        "create_date": "2021-12-18T00:00:00.000Z",
-        "reading_date": null,
-        "id_state": 1
-        
-    },
-    
-    {
-        "id": 2,
-        "title": "Registro exitoso",
-        "description": "Gracias por preferirnos, disfruta nuestra app :)",
-        "id_user": 1,
-        "id_sender": 0,
-        "id_type": 2,
-        "create_date": "2021-12-18T19:29:23.000Z",
-        "reading_date": null,
-        "id_state": 2
+        title:title,
+        description:description,
+        id_user:id_user,
+        id_sender:id_sender,
+        id_type:id_type
     }
-]
 
 
-### Petición POST /crearNotificacion
+### Respuesta SEND
+mensaje de Confirmación del Envió de la Notificación
+{
+
+    mensaje:'La carga se efectuo correctamente'
+        
+}
+
+## Petición POST '/usuarios/crear'
 
 Requiere: BODY - RAW - TypeJSON
 
 {
+            fullname:fullname,
+            email:email,
+            id_role:id_role
+        }
 
-        "title": "Nuevo Taller",
-        "description": "Taller de Programacion web",
-        "id_user": 1,
-        "id_sender": 2,
-        "id_type": 1
-        
-}
 
-```
+### Respuesta SEND
+mensaje:'Usuario registrado correctamente'
 
-Response:  mensaje de Confirmación del Envió de la Notificación
-```
-{
-
-        mensaje:'La carga se efectuo correctamente'
-        
-}
-
-### Petición POST /sendMailRegistro
+## Petición PUT /usuarios/readingNotifications'
 
 Requiere: BODY - RAW - TypeJSON
 
-{
+ {
+        id:id
+    }
 
-        "email": "email@gmail.com",
-        "username": "Name_User",
-        "password": "password"  
-        
-}
 
-```
+### Respuesta SEND
+mensaje:'Estado de la Notificación Actualizado'
 
-Response:  mensaje de Confirmación del Envió del Email
-```
 
 Cadena texto :  "Enviado"
 
-
-### Petición POST /sendMailLogin
+## Petición PUT /usuarios/notifications
 
 Requiere: BODY - RAW - TypeJSON
 
-{
 
-        "email": "email@gmail.com",
-        "username": "Name_User",
+ {
+        title: title, 
+        description:description, 
+        id_user:id_user, 
+        id_sender:id_sender, 
+        id_type:id_type,
+        id_state:id_state
+    }
+    
+ ### Respuesta SEND
+ mensaje:'Notificación Actualizada'
 
-        
-}
-
-```
-
-Response:  mensaje de Confirmación del Envió del Email
-```
-
-Cadena texto :  "Enviado"
-
-
-
----
-
-### Petición POST /sendNotiToNumber
+## Petición POST /sendNotiToNumber
 
 Requiere: BODY - RAW - TypeJSON
 
@@ -129,10 +101,9 @@ Requiere: BODY - RAW - TypeJSON
         
 }
 
-```
+### Respuesta SEND
+mensaje de Confirmación del Envió del Email
 
-Response:  mensaje de Confirmación del Envió del Email
-```
 
 Cadena texto :  "Mensaje Enviado"
 
@@ -140,7 +111,7 @@ Cadena texto :  "Mensaje Enviado"
 
 ---
 
-### Petición POST /sendMailAsesoria
+## Petición POST /sendMailAsesoria
 
 Requiere: BODY - RAW - TypeJSON
 
@@ -154,10 +125,10 @@ Requiere: BODY - RAW - TypeJSON
         
 }
 
-```
 
-Response:  mensaje de Confirmación del Envió del Email
-```
+
+### Respuesta SEND
+mensaje de Confirmación del Envió del Email
 
 Cadena texto :  "Enviado"
 
@@ -165,7 +136,7 @@ Cadena texto :  "Enviado"
 
 ---
 
-### Petición POST /sendMailAuditoria
+## Petición POST /sendMailAuditoria
 
 Requiere: BODY - RAW - TypeJSON
 
@@ -179,10 +150,8 @@ Requiere: BODY - RAW - TypeJSON
         
 }
 
-```
-
-Response:  mensaje de Confirmación del Envió del Email
-```
+### Respuesta SEND
+mensaje de Confirmación del Envió del Email
 
 Cadena texto :  "Enviado"
 
