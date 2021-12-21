@@ -7,19 +7,19 @@
 
 # Rutas
 
-## Petición GET/
+## Petición GET/usuarios/notifications/:id
 
-'usuarios/notifications/:id'
 
-### RESPUESTA SEND
 
-mensaje:'Error al solicitar notificaciones'
+### RESPUESTA
+
+[{"id":1,"title":"Nuevo Curso","description":"Inscribete","id_user":1,"id_sender":2,"id_type":7,"create_date":"2021-12-18T00:00:00.000Z","reading_date":null,"id_state":1}]
 
 ## Petición DELETE 
 /usuarios/notifications/delete/:id'
 
 ### Respuesta SEND
-"error al eliminar "
+"Eliminado Satisfactoriamente"
 
 ## Petición POST /
 '/usuarios/notifications'
